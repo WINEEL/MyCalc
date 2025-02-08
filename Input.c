@@ -7,6 +7,7 @@ void show_help() {
     printf("Available Functions:\n");
     printf("  - Basic arithmetic: +, -, *, /, ()\n");
     printf("  - Trigonometric: sin(x), cos(x), tan(x) (x in radians)\n");
+    printf("  - Trigonometric: sin_deg(x), cos_deg(x), tan_deg(x) (x in degrees)\n");
     printf("  - Logarithmic: log(x), log10(x)\n");
     printf("  - Factorial: fact(n) (n <= 20)\n");
     printf("  - Power: pow(base, exponent)\n");
