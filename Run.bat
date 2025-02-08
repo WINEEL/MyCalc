@@ -8,7 +8,10 @@ echo ---------------------------------------------
 :loop
 gcc Input.c -o input.exe
 input.exe
-if %ERRORLEVEL% NEQ 0 goto loop
+if exist exit_marker.txt (
+    del /f /q exit_marker.txt
+    goto cleanup
+)
 
 :: Compile dynamically generated win.h and Output.c
 gcc Output.c -o output.exe
@@ -17,7 +20,6 @@ if %ERRORLEVEL% NEQ 0 goto loop
 output.exe
 goto loop
 
-:: Cleanup files when CMD is closed
+:: Cleanup files when exiting
 :cleanup
-del /f /q input.exe output.exe win.h 2>nul
 exit
