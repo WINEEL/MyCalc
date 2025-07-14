@@ -4,3 +4,24 @@ win.h
 errors.log
 *.o
 *.obj
+# Build artifacts
+*.exe
+*.o
+*.obj
+*.out
+input
+output
+
+# Generated files
+win.h
+exit_marker.txt
+errors.log
+
+# Editor/IDE folders
+.vscode/
+.idea/
+*.swp
+
+# OS-specific
+.DS_Store
+Thumbs.db
