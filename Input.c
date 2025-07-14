@@ -5,7 +5,7 @@
 
 // Function to display static help menu
 void show_help() {
-    printf("\n---------------- HELP MENU ----------------\n");
+    printf("\n---------------- HELP MENU ----------------\n\n");
     printf("Available Functions:\n");
     printf("  - Basic arithmetic: +, -, *, /, ()\n");
     printf("  - Trigonometric (Degrees): sin(x), cos(x), tan(x)\n");
@@ -15,7 +15,7 @@ void show_help() {
     printf("  - Prime check: isprime(n)\n");
     printf("  - nth Prime: nth_prime(n)\n");
     printf("  - Reverse number: reverse(n)\n");
-    printf("  - Find factors: factors(n)\n");
+    printf("  - Find factors: factors(n)\n\n");
     printf("Special Commands:\n");
     printf("  - help_all(): List all functions dynamically\n");
     printf("  - exit(): Exit the calculator\n");
