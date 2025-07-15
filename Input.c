@@ -34,12 +34,9 @@ void show_all_functions() {
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        // Look for lines that define functions (exclude macros, includes, etc.)
-        if (strstr(line, "long int") || strstr(line, "double") || strstr(line, "int")) {
-            if (strchr(line, '(') && strchr(line, ')')) {
-                // Print function declaration
-                printf("%s", line);
-            }
+        if ((strstr(line, "long int") || strstr(line, "double") || strstr(line, "int")) &&
+            strchr(line, '(') && strchr(line, ')')) {
+            printf("%s", line);
         }
     }
 
@@ -52,47 +49,57 @@ int main() {
 
     while (1) {
         printf("\n>>> ");
-        fflush(stdout);  // Ensure prompt appears before input
+        fflush(stdout);
 
         if (fgets(s, sizeof(s), stdin) == NULL)
-            return 1;  // Exit if input fails
+            return 1;
 
-        // Remove trailing newline
+        // Remove newline and trailing spaces
         size_t len = strlen(s);
-        if (len > 0 && s[len - 1] == '\n')
-            s[len - 1] = '\0';
+        if (len > 0 && s[len - 1] == '\n') s[len - 1] = '\0';
+        while (len > 0 && isspace(s[len - 1])) s[--len] = '\0';
 
-        // Handle exit()
-        if (strcmp(s, "exit()") == 0)
-            exit(0);  // Exit the program
+        // Handle exit
+        if (strcmp(s, "exit()") == 0 || strcmp(s, "exit") == 0) {
+            FILE *p = fopen("win.h", "w");
+            if (p == NULL) {
+                perror("Error opening win.h");
+                return 1;
+            }
+            fprintf(p, "#include<stdio.h>\n#include<math.h>\n#include\"wincalc.h\"\n"
+                       "double calc(){ return -99999; }");
+            fclose(p);
 
-        // Handle help()
-        if (strcmp(s, "help()") == 0) {
+            FILE *m = fopen("exit_marker.txt", "w");
+            if (m) fclose(m);
+
+            break;
+        }
+
+        // Handle help
+        if (strcmp(s, "help()") == 0 || strcmp(s, "help") == 0) {
             show_help();
-            continue;  // Restart the loop
+            continue;
         }
 
-        // Handle help_all()
-        if (strcmp(s, "help_all()") == 0) {
+        // Handle help_all
+        if (strcmp(s, "help_all()") == 0 || strcmp(s, "help_all") == 0) {
             show_all_functions();
-            continue;  // Restart the loop
+            continue;
         }
 
-        // If input is empty, set a default expression "0"
-        if (s[0] == '\0')
-            strcpy(s, "0");
+        if (s[0] == '\0') strcpy(s, "0");
 
-        // Open win.h and overwrite with new function
         FILE *p = fopen("win.h", "w");
-        if (p == NULL)
-            return 1;  // Exit if file error
+        if (p == NULL) {
+            perror("Error opening win.h");
+            return 1;
+        }
 
-        // Write the input as a valid return expression
         fprintf(p, "#include<stdio.h>\n#include<math.h>\n#include\"wincalc.h\"\n"
                    "double calc(){ return(%s); }", s);
-
         fclose(p);
-        break;  // Exit the loop to allow Output.c to compile
+        break;
     }
 
     return 0;

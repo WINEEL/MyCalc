@@ -1,10 +1,10 @@
-CC=gcc
-CFLAGS=-Wall
-INPUT=Input.c
-OUTPUT=Output.c
-HEADERS=wincalc.h
-EXEC1=input
-EXEC2=output
+CC = gcc
+CFLAGS = -Wall
+INPUT = Input.c
+OUTPUT = Output.c
+HEADERS = wincalc.h
+EXEC1 = input
+EXEC2 = output
 
 .PHONY: all clean run loop
 
@@ -16,7 +16,7 @@ $(EXEC1): $(INPUT) $(HEADERS)
 $(EXEC2): $(OUTPUT) $(HEADERS)
 	$(CC) $(CFLAGS) $(OUTPUT) -o $(EXEC2)
 
-run: 
+run:
 	@echo "MyCalc [Version 1.1.0]"
 	@echo "(c) Wilson Corporation. All rights reserved."
 	@echo "---------------------------------------------"
