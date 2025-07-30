@@ -5,10 +5,10 @@ int main() {
     double result = calc();
 
     if (result == -99999) {
-        // Exit signal; do not print
-        return 0;
+        return 0; // exit silently
     }
 
-    printf("%.10G\n", result);
+    // Green output for result
+    printf("\033[1;32m%.10G\033[0m\n", result);
     return 0;
 }

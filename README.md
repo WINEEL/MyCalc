@@ -43,6 +43,9 @@ This project explores **dynamic C compilation** and **real-time execution** with
    make run
    ```
 
+   - The calculator now supports colored result output (bright green)
+   - Works on macOS, Linux, and Windows (via WSL, Git Bash, or MinGW)
+
 3. **Enter expressions** and see instant results:
    ```
    >>> 1+2
@@ -62,6 +65,17 @@ This project explores **dynamic C compilation** and **real-time execution** with
 
 5. **Auto Cleanup**:  
    - When you exit, `win.h`, `input.exe`, and `output.exe` are **automatically deleted** for security.
+
+
+## Terminal Colors
+Results are printed in bright green using ANSI escape codes.
+
+
+## Cross-Platform Makefile
+The provided `Makefile`:
+- Detects Windows vs macOS/Linux
+- Uses correct file delete and null device syntax per OS
+- Supports dynamic recompilation in a REPL loop
 
 
 ## Available Functions
