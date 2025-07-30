@@ -9,7 +9,7 @@ It dynamically compiles expressions using **C**, allowing users to evaluate:
 - **Prime number calculations**
 - **Other mathematical functions**
 
-This project explores **dynamic C compilation** and **real-time execution** within a shell-like environment.
+Originally started in the **2020–2021 academic year** during the COVID-19 lockdown, this project was one of my earliest explorations into programming logic. In **2025**, it was modernized with Makefile support, cross-platform compatibility, and cleanup logic.
 
 
 ## Features
@@ -121,8 +121,7 @@ These files are **auto-generated** during compilation and should NOT be committe
 
 
 ## Why This Project?
-This project was created as an **experiment to explore how C programs can dynamically modify and compile code**.  
-It demonstrates:
+Started during the **2020–2021 academic year** at the time of COVID-19 lockdowns, this was one of my earliest programming experiments in C. In **2025**, I enhanced it with professional touches like Makefile automation, cross-platform support, and ANSI-colored output.It demonstrates:
 - How to use **C as a REPL**
 - How Makefile or batch/shell files can **control execution flow**
 - How **real-time mathematical expression evaluation** works in C
